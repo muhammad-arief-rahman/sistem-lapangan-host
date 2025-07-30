@@ -1,0 +1,25 @@
+{
+    "devDependencies": {
+        "@prettier/plugin-php": "^0.22.4",
+        "@tailwindcss/vite": "^4.0.0",
+        "axios": "^1.8.2",
+        "concurrently": "^9.1.2",
+        "laravel-vite-plugin": "^1.2.0",
+        "prettier": "^3.5.3",
+        "prettier-plugin-tailwindcss": "^0.6.12",
+        "tailwindcss": "^4.0.0",
+        "vite": "^6.2.4"
+    },
+    "private": true,
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "prettier": "prettier",
+        "start-laravel": "php artisan serve",
+        "ngrok-tunnel": "ngrok start --all --config ngrok.yml",
+        "start-all": "concurrently -c \"#93c5fd,#c4b5fd,#fdba74,#308446\" \"npm run dev\" \"npm run start-laravel\" \"npm run ngrok-tunnel\" \"php artisan queue:listen\" --names='vite,laravel,ngrok,queue'",
+        "start-all-bun": "concurrently -c \"#93c5fd,#c4b5fd,#fdba74,#308446\" \"bun run dev\" \"bun run start-laravel\" \"bun run ngrok-tunnel\" \"php artisan queue:listen\" --names='vite,laravel,ngrok,queue'",
+        "start-all-built": "concurrently -c \"#c4b5fd,#fdba74,#308446\" \"npm run start-laravel\" \"npm run ngrok-tunnel\" \"php artisan queue:listen\" --names='laravel,ngrok,queue'"
+    },
+    "type": "module"
+}
