@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies('*');
         $middleware->alias([
             'authenticated' => \App\Http\Middleware\AuthMiddleware::class,
             'incomplete-service' => \App\Http\Middleware\IncompleteService::class,
